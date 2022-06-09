@@ -1,5 +1,8 @@
 package lesson1;
 
+/**
+ * Урок №1 - типы данных в java
+ */
 public class Lesson1 {
     public static void main(String[] args) {
         //Примитивы
@@ -55,7 +58,5 @@ public class Lesson1 {
         String s4 = word1.repeat(10);
         //Убрать лишние пробелы в начале и в конце строки
         String s5 = word1.trim();
-
-
     }
 }

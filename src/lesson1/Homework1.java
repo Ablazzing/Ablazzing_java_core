@@ -1,5 +1,8 @@
 package lesson1;
 
+/**
+ * Домашка №1
+ */
 public class Homework1 {
     public static void main(String[] args) {
         //Базовый уровень

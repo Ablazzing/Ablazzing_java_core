@@ -135,11 +135,5 @@ public class Lesson2 {
                 break;
             }
         }
-
-
-
-
-
-
     }
 }
