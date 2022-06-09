@@ -1,6 +1,4 @@
-package com.company.lesson2;
-
-import java.util.Map;
+package lesson2;
 
 /**
  * Урок №2 - Условные операторы, сравнение примитивов и объектов, циклы

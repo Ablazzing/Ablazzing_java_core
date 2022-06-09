@@ -1,6 +1,4 @@
-package com.company.lesson1;
-
-import java.util.Locale;
+package lesson1;
 
 public class Lesson1 {
     public static void main(String[] args) {
