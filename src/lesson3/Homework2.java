@@ -1,4 +1,4 @@
-package lesson4;
+package lesson3;
 
 import javax.sound.midi.Soundbank;
 import java.util.Arrays;
