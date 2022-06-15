@@ -1,11 +1,8 @@
 package lesson3;
 
-import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.summarizingDouble;
 
 public class Homework2 {
     public static void main(String[] args) {
@@ -15,8 +12,9 @@ public class Homework2 {
         // Задание №1 - Написать цикл, который выводит через пробел 100 чисел с приставкой "a".
         // Ожидаемый результат: 1а 2а 3а .. 100а
         for (int i = 1; i < 101; i++) {
-            System.out.println(i+"a");
+            System.out.print(i+"a ");
         }
+        System.out.println("====================================");
         //
         // Задание №2
         // Дано:
@@ -35,6 +33,7 @@ public class Homework2 {
         } else {
             System.out.println("Пошел в университет");
         }
+        System.out.println("====================================");
         // Задание №3
         // Дано:
         boolean chicken = true;
@@ -60,18 +59,18 @@ public class Homework2 {
                 if (vegetables) {
                     System.out.println("Овощной");
                 } else {
-                    System.out.println("Нет ввсех ингредиентов для салатов");
+                    System.out.println("Нет всех ингредиентов для салатов");
                 }
 
             }
         }
-
+        System.out.println("====================================");
         // Задание №4
         // Создать два класса, которые описывают какое либо животное (имеют два атрибута).
         // Написать к ним конструктор, сеттеры, геттеры.
         class Bird {
-            boolean haveWings = true;
-            boolean canWoof = false;
+            boolean haveWings;
+            boolean canWoof;
             // конструктор
             public Bird(boolean canWoof, boolean haveWings) {
                 this.canWoof = canWoof;
@@ -134,6 +133,8 @@ public class Homework2 {
             ++counter;
         }
         System.out.println("result = "+result+" Количество итераций = " + counter);
+
+        System.out.println("====================================");
         // Задание №2: Дан массив единиц, произвольной длины. Создать цикл, который заменяет каждый четный элемент на 0;
         // Например, дано: [1,1,1,1,1]
         // Ожидаемый результат: [0,1,0,1,0]
@@ -143,6 +144,7 @@ public class Homework2 {
             array[i] = (int) i % 2 == 1 ? 1 : 0 ;
         }
         System.out.println(Arrays.toString(array));
+        System.out.println("====================================");
         // Задание №3:
         // Дано:
         boolean hasFuel = true;
@@ -249,7 +251,7 @@ public class Homework2 {
         CarService brokenCar = new CarService(hasFuel, hasElectricsProblem,hasMotorProblem,hasTransmissionProblem,hasWheelsProblem);
         System.out.println("Счет итого: " + brokenCar.countInvoice());
 
-
+        System.out.println("====================================");
 
         // Задание №4:
         // Написать систему управления складскими запасами. Создать класс склад, создать класс работники
@@ -299,7 +301,7 @@ public class Homework2 {
         w3.getVodka(2, warehouse);
 
         System.out.println("Осталось целой водки на складе " + warehouse.vodkaAmount);
-
+        System.out.println("====================================");
         // Экспертный уровень:
         // Предыстория: Мы находимся в статистическом институте. Хочется понять уровень миграции между регионами за месяц.
         // Для этого было решено произвести анализ передвижения автомобилей: на границе каждого региона стоят камеры,
@@ -359,7 +361,9 @@ public class Homework2 {
             });
         });
 
-        // упорядочиваем мапу с регионами по популярности. Дернул с интернетов :)
+        // упорядочиваем мапу с регионами по значению. Дернул с интернетов :)
+        // поидее думаю можно засунуть все в обратную TreeMap которая упорядочивается по ключу
+        // где ключ будет популярнотью региона
         Map<Integer, Integer> sortedMap = popularRegions.entrySet().stream()
                 .sorted(Comparator.comparingInt(e -> -e.getValue()))
                 .collect(Collectors.toMap(
@@ -373,47 +377,45 @@ public class Homework2 {
         System.out.print("ТОП-5: ");
 
         sortedMap.entrySet().stream().limit(5).forEach((k) -> {
-            // в данном случае ключ - значение региона, vflue - количество въездов
+            // в данном случае ключ - значение региона, vаlue - количество въездов
             System.out.print( k.getKey() + ", ");
         });
         System.out.println("");
 
         class ParserPlate {
             public String getReion(String numbr) {
-                //String[] plateArray =  numbr.split("[А-Я]{1}[0-9]{3}[А-Я]{2}[0-9]{3}");
-                // В общем у меня подгорело кресло от регулярок )
+                //String[] plateArray =  numbr.split("$.{3}");
+                // В общем у меня подгорело кресло от регулярок а было так просто )
                 return numbr.substring(numbr.length()-3, numbr.length());
             }
         }
         ParserPlate parser = new ParserPlate();
         // главная фиговина для вывода топ-5 регионов
-        sortedMap.entrySet().stream().limit(5).forEach((k)-> {
-            data.get(k.getKey()).forEach((n,v) -> {
-               if (n.equals("input")) {
-                    System.out.print(k.getKey() + " - больше всего въехало с номерами ");
-
-                    Map<String, Integer> test= new HashMap<String, Integer>();
-                    for (String s : v) {
-                        String p = parser.getReion(s).toString();
-                        if (!test.containsKey(p)) {
-                            test.put(p,1);
-                        } else {
-                            int i = test.get(p) + 1;
-                            test.put(p, i);
-                        }
-                  }
-                    // так как нам не важно сколько регионов было с одинаковым количесвом въехавших машин,
-                    // мы берем любой( в данном случае последний). Переворачиваем в TreeMap, который уже упорядочен.
-                    TreeMap<Integer, String> sortedPates = new TreeMap<Integer, String>();
-                    for (Map.Entry entry: test.entrySet()) {
-                         sortedPates.put((Integer) entry.getValue(), (String) entry.getKey());
+        sortedMap.entrySet().stream().limit(5).forEach((k)-> data.get(k.getKey()).forEach((n, v) -> {
+           if (n.equals("input")) {
+                System.out.print(k.getKey() + " - больше всего въехало с номерами ");
+                Map<String, Integer> test= new HashMap<String, Integer>();
+                for (String s : v) {
+                    String p = parser.getReion(s).toString();
+                    if (!test.containsKey(p)) {
+                        test.put(p,1);
+                    } else {
+                        int i = test.get(p) + 1;
+                        test.put(p, i);
                     }
-                    System.out.print(sortedPates.lastEntry().getValue() + ": "+sortedPates.lastEntry().getKey() + " машины \n");
-             }
-            });
-        });
+              }
+                // так как нам не важно сколько регионов было с одинаковым количесвом въехавших машин,
+                // мы берем любой( в данном случае последний). Переворачиваем в TreeMap, который уже упорядочен.
+                TreeMap<Integer, String> sortedPates = new TreeMap<Integer, String>();
+                for (Map.Entry entry: test.entrySet()) {
+                     sortedPates.put((Integer) entry.getValue(), (String) entry.getKey());
+                }
+                System.out.print(sortedPates.lastEntry().getValue() + ": "+sortedPates.lastEntry().getKey() + " машины \n");
+         }
+        }));
 
         //специальные номера
+        // тоже засовываем все в Set так как нам нужны только уникальные номера
         HashSet<String> specialPlates = new HashSet<String>();
 
         data.forEach((key, value) -> {
@@ -427,16 +429,6 @@ public class Homework2 {
         });
         System.out.println("===============Подзадача 2 ===============");
         System.out.println("Всего со спецномерами " + specialPlates.size() +" машин");
-
-
-
-
-
-
-
-
-
-
 
     }
 
