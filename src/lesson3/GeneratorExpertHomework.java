@@ -29,7 +29,7 @@ public class GeneratorExpertHomework {
 
     private static String generateRandomCarNumber() {
         String middleNumbers = String.valueOf(RANDOM.nextInt(1000));
-        String region = String.valueOf(RANDOM.nextInt(1000));
+        String region = String.valueOf(RANDOM.nextInt(50));
         return new StringBuilder()
                 .append(LETTERS.charAt(RANDOM.nextInt(LETTERS.length())))
                 .append("0".repeat(3 - middleNumbers.length()))
