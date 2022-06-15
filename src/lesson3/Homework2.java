@@ -348,7 +348,7 @@ public class Homework2 {
                                                 System.out.println("╚══════╝╚═╝  ╚═╝╚═╝     ╚══════╝╚═╝  ╚═╝   ╚═╝");
         System.out.println("===============Подзадача 1 ===============");
         Map<Integer, Map<String, String[]>> data = GeneratorExpertHomework.getData();
-        // регионы с количеством въехавших машин. Структура: количество машин - регион. Для сортировки
+        // Регионы с количеством въехавших машин. Структура: количество машин - регион. Для сортировки
         Map <Integer, Integer> popularRegions =  new TreeMap<Integer, Integer>();
 
         data.forEach((key, value) -> {
