@@ -1,7 +1,10 @@
 package lesson3;
 
-import javax.sound.midi.Soundbank;
-import java.util.Arrays;
+import java.sql.Array;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.groupingBy;
 
 public class Homework2 {
     public static void main(String[] args) {
@@ -335,6 +338,100 @@ public class Homework2 {
         // <Integer> - обозначает тип который хранится в этой структуре данных (Generics)
         // Регулярные выражения - вытащить регион авто
         //
+        System.out.println("_______--------__-----_______");
+        Map<Integer, Map<String, String[]>> data = GeneratorExpertHomework.getData();
+        // регионы с количеством въехавших машин структура: количество машин - регион. Для сортироовки
+        Map <Integer, Integer> popularRegions =  new TreeMap<Integer, Integer>();
+
+        data.forEach((key, value) -> {
+            //System.out.println(key);
+            value.forEach((k, v) ->
+                    {
+                        //System.out.print("\t"+k.toString() + " ");
+                        if (k.equals("input")) {
+                            popularRegions.put(key, v.length);
+                        }
+                        //System.out.println(Arrays.toString(v));
+                    }
+                   );
+        });
+
+        //popularRegions.forEach((key, value) -> {
+        //    System.out.println(key + "->" + value);
+        //});
+
+        Map<Integer, Integer> sortedMap = popularRegions.entrySet().stream()
+                .sorted(Comparator.comparingInt(e -> -e.getValue()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a, b) -> { throw new AssertionError(); },
+                        LinkedHashMap::new
+                ));
+
+        //sortedMap.entrySet().forEach(System.out::println);
+        // ТОП-5: 98, 178, 01, 22, 33
+        System.out.print("ТОП-5: ");
+
+        sortedMap.entrySet().stream().limit(5).forEach((k) -> {
+            // в данном случае ключ - значение региона, vflue - количество въездов
+            System.out.print( k.getKey() + ", ");
+        });
+        System.out.println("");
+
+        // 98 - больше всего въехало с номерами 178: 23 машины
+        class ParserPlate {
+
+            public String getReion(String numbr) {
+                //String[] plateArray =  numbr.split("[А-Я]{1}[0-9]{3}[А-Я]{2}[0-9]{3}");
+                // В общем у меня подгорело кресло от регулярок )
+                return numbr.substring(numbr.length()-3, numbr.length());
+            }
+
+            public String getCarByRegion(String[] array) {
+
+                return "больше всего въехало с номерами 178: 23 машины";
+            }
+
+        }
+        ParserPlate parser = new ParserPlate();
+
+        sortedMap.entrySet().stream().limit(5).forEach((k)-> {
+            data.get(k.getKey()).forEach((n,v) -> {
+                if (n.equals("input")) {
+
+                    System.out.println(Arrays.toString(v));
+                    Map<Integer, Integer> test= new HashMap<Integer, Integer>();
+                    //Map<Integer, Integer> test= new TreeMap<Integer, Integer>();
+                    for (String s : v) {
+                        String p = parser.getReion(s).toString();
+                        if (!test.containsKey(p)) {
+                            test.put(Integer.parseInt(p),1);
+                            //System.out.println(s);
+                        } else {
+                            test.put(Integer.parseInt(p), test.get(Integer.parseInt(p)) + 1);
+                        }
+                        //System.out.println(parser.getReion(s));
+                        test.forEach((key, value) -> System.out.println(key.toString()+ " " + value));
+                        System.out.println("----");
+                    }
+                    //test.forEach((key, value) -> System.out.println(key.toString() + " " + value));
+                }
+            });
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
 
