@@ -1,5 +1,10 @@
 package lesson3;
 
+import lesson3.homeWork2.HomeWorkExpert1;
+import lesson3.homeWork2.HomeWorkExpert2;
+
+import java.util.Map;
+
 public class Homework2 {
     public static void main(String[] args) {
 
@@ -118,5 +123,13 @@ public class Homework2 {
         // Map (HashMap) - узнать что это, map.get(), map.put(), map.entrySet() - для итерации, entry.getValue(), entry.getKey()
         // <Integer> - обозначает тип который хранится в этой структуре данных (Generics)
         // Регулярные выражения - вытащить регион авто
+
+        HomeWorkExpert1 first = new HomeWorkExpert1();
+        Map<Integer, Map<String, String[]>> data = GeneratorExpertHomework.getData();
+        first.resultHomeWork(data);
+
+        System.out.println();
+        HomeWorkExpert2 second = new HomeWorkExpert2();
+        second.countCarSpecialNumber(data);
     }
 }
