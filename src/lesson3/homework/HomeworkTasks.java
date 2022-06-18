@@ -206,6 +206,10 @@ public class Homework2 {
         emp3.destroyVodka();
         emp3.destroyVodka();
         System.out.println(stock.getVodka());
+        System.out.println(emp1.getJournal());
+        System.out.println(emp2.getJournal());
+        System.out.println(emp3.getJournal());
+
 
         // Экспертный уровень:
         // Предыстория: Мы находимся в статистическом институте. Хочется понять уровень миграции между регионами за месяц.
