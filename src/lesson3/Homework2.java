@@ -116,14 +116,26 @@ public class Homework2 {
         System.out.println("Задание №3. Продвинутый уровень");
         if (!hasFuel && !hasElectricsProblem && !hasMotorProblem && !hasWheelsProblem && !hasTransmissionProblem) {
             System.out.println("1000");
-        } else if (hasMotorProblem) {
+        } else if (hasMotorProblem && !hasElectricsProblem && !hasWheelsProblem && !hasTransmissionProblem) {
             System.out.println("10_000");
-        } else if (hasElectricsProblem) {
+        } else if (hasElectricsProblem && !hasMotorProblem && !hasWheelsProblem && !hasTransmissionProblem) {
             System.out.println("5000");
-        } else if (hasTransmissionProblem) {
+        } else if (hasTransmissionProblem && !hasElectricsProblem && !hasMotorProblem && !hasWheelsProblem) {
             System.out.println("4000");
-        } else if (hasWheelsProblem) {
+        } else if (hasWheelsProblem && !hasElectricsProblem && !hasMotorProblem && !hasTransmissionProblem) {
             System.out.println("2000");
+        } else if (hasElectricsProblem && hasMotorProblem && !hasWheelsProblem && !hasTransmissionProblem) {
+            System.out.println("13500");
+        } else if (hasElectricsProblem && !hasMotorProblem && hasWheelsProblem && !hasTransmissionProblem) {
+            System.out.println("6300");
+        } else if (hasElectricsProblem && !hasMotorProblem && !hasWheelsProblem && hasTransmissionProblem) {
+            System.out.println("7200");
+        } else if (!hasElectricsProblem && hasMotorProblem && hasWheelsProblem && !hasTransmissionProblem) {
+            System.out.println("10800");
+        } else if (!hasElectricsProblem && hasMotorProblem && !hasWheelsProblem && hasTransmissionProblem) {
+            System.out.println("11200");
+        } else if (!hasElectricsProblem && !hasMotorProblem && hasWheelsProblem && hasTransmissionProblem) {
+            System.out.println("5400");
         }
         System.out.println();
     }
@@ -171,6 +183,7 @@ public class Homework2 {
         boolean hasMotorProblem = false;
         boolean hasTransmissionProblem = true;
         boolean hasWheelsProblem = true;
+        repairPrice(hasFuel, hasElectricsProblem, hasMotorProblem, hasTransmissionProblem, hasWheelsProblem);
 
         // Задание №4:
         // Написать систему управления складскими запасами. Создать класс склад, создать класс работники
@@ -180,7 +193,19 @@ public class Homework2 {
         // Работник берет из склада товар, на складе товар уменьшается. Работник когда взял товар, выводит на экран
         // "Ура я испортил водку!" и добавляет к себе в журнал количество испорченного товара.
         // У склада есть только одна позиция - Водка.
-
+        Stock stock = new Stock();
+        Employee emp1 = new Employee("Ivan", stock);
+        Employee emp2 = new Employee("Petr", stock);
+        Employee emp3 = new Employee("Yuri", stock);
+        emp1.destroyVodka();
+        System.out.println(stock.getVodka());
+        emp2.destroyVodka();
+        emp2.destroyVodka();
+        System.out.println(stock.getVodka());
+        emp3.destroyVodka();
+        emp3.destroyVodka();
+        emp3.destroyVodka();
+        System.out.println(stock.getVodka());
 
         // Экспертный уровень:
         // Предыстория: Мы находимся в статистическом институте. Хочется понять уровень миграции между регионами за месяц.
