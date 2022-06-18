@@ -1,6 +1,6 @@
-package lesson3;
+package lesson3.homework;
 
-public class Homework2 {
+public class HomeworkTasks {
     public static void main(String[] args) {
 
         // Домашка

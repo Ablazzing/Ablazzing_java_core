@@ -1,4 +1,4 @@
-package lesson3.homework.expert;
+package lesson3.homework;
 
 public class HomeworkBaseAndAdvancedErrors {
     public static void main(String[] args) {

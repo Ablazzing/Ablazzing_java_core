@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import static lesson4.GeneratorExpertHomework.getData;
+import static lesson3.homework.expert.GeneratorExpertHomework.getData;
 
 public class ExpertHomeworkFor {
 

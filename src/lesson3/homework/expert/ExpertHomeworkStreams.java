@@ -7,7 +7,7 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import static lesson4.GeneratorExpertHomework.getData;
+import static lesson3.homework.expert.GeneratorExpertHomework.getData;
 
 public class ExpertHomeworkStreams {
 

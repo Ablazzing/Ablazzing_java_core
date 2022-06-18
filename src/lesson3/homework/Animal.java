@@ -1,9 +1,9 @@
-package lesson3.homework.expert;
+package lesson3.homework;
 
-public class Bear {
+public class Animal {
     private String name;
 
-    public Bear(String name) {
+    public Animal(String name) {
         this.name = name;
     }
 
