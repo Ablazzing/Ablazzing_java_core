@@ -32,4 +32,8 @@ public class Employee {
         System.out.println("Ура я испортил водку!");
         this.journal += 1;
     }
+
+    public int getJournal() {
+        return journal;
+    }
 }
