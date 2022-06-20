@@ -50,7 +50,7 @@ public class DataGenerator {
         double outcome = RANDOM.doubles(MINIMUM_SUM_RECORD, MAXIMUM_SUM_RECORD).findFirst().getAsDouble();
         String shop = SHOPS[RANDOM.nextInt(SHOPS.length)];
         String date = new StringBuilder()
-                .append(RANDOM.nextInt(COUNT_DAYS))
+                .append(RANDOM.nextInt(COUNT_DAYS) + 1)
                 .append("/")
                 .append(month)
                 .append("/")
