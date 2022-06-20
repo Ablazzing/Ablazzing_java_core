@@ -19,6 +19,16 @@ public class DataGenerator {
     private static final Random RANDOM = new Random(1);
     private static final String[] SHOPS = {"pyterochka", "perekrestok", "ydoma", "okey"};
     private static final String REPORT_HEADER = "магазин;доход;расход;дата";
+    private static final int COUNT_REPORTS = 12;
+    private static final int COUNT_REPORT_RECORDS = 28;
+    private static final int COUNT_DAYS = 28;
+    private static final int MINIMUM_SUM_RECORD = 10000;
+    private static final int MAXIMUM_SUM_RECORD = 100000;
+    private static final int YEAR = 2012;
+
+    public static void main(String[] args) throws IOException {
+        createReports();
+    }
 
     public static void createReports() throws IOException {
         Path resource = Paths.get("resource");
@@ -26,26 +36,25 @@ public class DataGenerator {
             Files.createDirectory(resource);
         }
 
-        for (int i = 1; i < 13; i++) {
+        for (int i = 1; i < COUNT_REPORTS + 1; i++) {
             int finalI = i;
             List<ReportRecord> reportRecords = Stream.generate(() -> generateRecord(finalI))
-                    .limit(28)
+                    .limit(COUNT_REPORT_RECORDS)
                     .collect(Collectors.toList());
             createReportFile(i, Paths.get(resource.toString()), reportRecords);
         }
     }
 
     private static ReportRecord generateRecord(int month) {
-        double income = RANDOM.doubles(1, 100000).findFirst().getAsDouble()
-                + 10000.00;
-        double outcome = RANDOM.doubles(1, 100000).findFirst().getAsDouble()
-                + 10000.00;
-        String shop = SHOPS[RANDOM.nextInt(4)];
+        double income = RANDOM.doubles(MINIMUM_SUM_RECORD, MAXIMUM_SUM_RECORD).findFirst().getAsDouble();
+        double outcome = RANDOM.doubles(MINIMUM_SUM_RECORD, MAXIMUM_SUM_RECORD).findFirst().getAsDouble();
+        String shop = SHOPS[RANDOM.nextInt(SHOPS.length)];
         String date = new StringBuilder()
-                .append(RANDOM.nextInt(28))
+                .append(RANDOM.nextInt(COUNT_DAYS))
                 .append("/")
                 .append(month)
-                .append("/2012")
+                .append("/")
+                .append(YEAR)
                 .toString();
         return new ReportRecord(shop, income, outcome, date);
     }
@@ -56,7 +65,9 @@ public class DataGenerator {
                 .append("report_")
                 .append(month < 10 ? "0" : "")
                 .append(month)
-                .append("_2012.txt")
+                .append("_")
+                .append(YEAR)
+                .append(".txt")
                 .toString();
 
         String filePath = Paths.get(destinationFolder.toString(), filename).toString();

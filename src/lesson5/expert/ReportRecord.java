@@ -1,5 +1,8 @@
 package lesson5.expert;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+
 public class ReportRecord {
     private String shop;
     private double income;
@@ -15,6 +18,10 @@ public class ReportRecord {
 
     @Override
     public String toString() {
-        return String.join(";", shop, String.valueOf(income), String.valueOf(outcome), date);
+        DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+        decimalFormatSymbols.setDecimalSeparator('.');
+        DecimalFormat decimalFormat = new DecimalFormat("0.00", decimalFormatSymbols);
+        return String.join(";", shop, decimalFormat.format(income),
+                decimalFormat.format(outcome), date);
     }
 }
