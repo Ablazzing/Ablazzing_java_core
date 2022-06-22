@@ -1,6 +1,6 @@
 package lesson3;
 
-public class Homework2 {
+public class MyHomework2 {
 
     // Домашка
     // Базовый уровень
