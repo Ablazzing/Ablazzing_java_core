@@ -24,7 +24,7 @@ public class Lesson5 {
         }
 
         //Чтение файла
-        FileReader fileReader = new FileReader("E:\\tutorial\\untitled\\resource\\test.txt");
+        FileReader fileReader = new FileReader("resource/test.txt");
         String result = "";
         while (fileReader.ready()) {
             int read = fileReader.read();
@@ -34,17 +34,17 @@ public class Lesson5 {
         System.out.println(result);
 
         //Перезапись файла (все что было в файле, если он существовал, пропадет)
-        FileWriter fileWriter = new FileWriter("E:\\tutorial\\untitled\\resource\\test2.txt");
+        FileWriter fileWriter = new FileWriter("resource/test2.txt");
         fileWriter.write("проба пера");
         fileWriter.close();
 
         //Добавление в файл
-        FileWriter fileWriter2 = new FileWriter("E:\\tutorial\\untitled\\resource\\test2.txt", true);
+        FileWriter fileWriter2 = new FileWriter("resource/test2.txt", true);
         fileWriter2.write("\nвторая проба пера");
         fileWriter2.close();
 
         //BufferedReader
-        BufferedReader bufferedReader = new BufferedReader(new FileReader("E:\\tutorial\\untitled\\resource\\test2.txt"));
+        BufferedReader bufferedReader = new BufferedReader(new FileReader("resource/test2.txt"));
         while (bufferedReader.ready()) {
             String row = bufferedReader.readLine();
             System.out.println(row);
