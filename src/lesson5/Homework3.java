@@ -50,8 +50,8 @@ public class Homework3 {
         // perekrestok;9920.20;28200.01;21/01/2012
         // Где pyterochka - название магазина; 122300.20 - доход; 100312.10 - расход, 20/01/2012 - дата операции
         //Читать файлы нужно через
-        String s = Homework3.class.getClassLoader().getResource("report_03_2012.txt").toString();
-        System.out.println(s);
+        String path = Homework3.class.getClassLoader().getResource("report_03_2012.txt").getPath();
+        System.out.println(path);
 
         // Задача №1
         // Необходимо составить отчет о итоговой прибыли за каждый месяц по магазину pyterochka
