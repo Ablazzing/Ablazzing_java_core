@@ -6,7 +6,7 @@ import homework3.lesson5basic.*;
 import java.io.IOException;
 
 public class Homework3 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         //Базовый уровень (для зачета нужно сделать хотя бы 2 из 3)
         //Задача №1
         //Дано: у нас есть две модели машин - жигули и toyota. Каждая из этих машин умеет: начинать движение,
@@ -46,11 +46,11 @@ public class Homework3 {
         //Задача №2
         // 1. Создать класс Financial record, с двумя атрибутами: incomes, outcomes (доходы, расходы)
         // 2. Создать в этом классе геттеры, сеттеры и конструктор на все атрибуты
-        // 3. Создать 10 отчетов, с разными доходами и расходами (Смотри класс new Random(1).nextInt() )
+        // 3. Создать 10 отчетов, с разными доходами и расходами (Смотри класс new Random(1).nextInt(10000) )
         // 4. Записать в файл "report.txt" все данные из отчетов.
         // 5. Прочитать файл report.txt, просуммировать все доходы и вывести на экран, тоже самое с расходами
         // Ожидаемый результат: общие доходы - (какое то число), общие расходы - (какое то число)
-        Lesson5Advanced.zadacha2advanced();
+//        Lesson5Advanced.zadacha2advanced();
 
 
         //Экспертный уровень
@@ -60,6 +60,9 @@ public class Homework3 {
         // pyterochka;299922.00;323333.02;21/01/2012
         // perekrestok;9920.20;28200.01;21/01/2012
         // Где pyterochka - название магазина; 122300.20 - доход; 100312.10 - расход, 20/01/2012 - дата операции
+        //Читать файлы нужно через
+        String s = Homework3.class.getClassLoader().getResource("report_03_2012.txt").toString();
+        System.out.println(s);
 
         // Задача №1
         // Необходимо составить отчет о итоговой прибыли за каждый месяц по магазину pyterochka
@@ -76,7 +79,5 @@ public class Homework3 {
         // Расходы pyterochka за весь период: 20032220.00
         // Расходы perekrestok за весь период: 1734220.00
         // .. и тд
-
-
     }
 }
