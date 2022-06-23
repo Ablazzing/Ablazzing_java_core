@@ -1,27 +1,27 @@
 package homework3.lesson5basic;
 
 public class FinancialRecord {
-    private String incomes;
-    private String outcomes;
+    private double incomes;
+    private double outcomes;
 
-    public FinancialRecord(String incomes, String outcomes) {
+    public FinancialRecord(double incomes, double outcomes) {
         this.incomes = incomes;
         this.outcomes = outcomes;
     }
 
-    public String getIncomes() {
+    public double getIncomes() {
         return incomes;
     }
 
-    public void setIncomes(String incomes) {
+    public void setIncomes(double incomes) {
         this.incomes = incomes;
     }
 
-    public String getOutcomes() {
+    public double getOutcomes() {
         return outcomes;
     }
 
-    public void setOutcomes(String outcomes) {
+    public void setOutcomes(double outcomes) {
         this.outcomes = outcomes;
     }
 }

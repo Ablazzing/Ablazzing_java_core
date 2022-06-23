@@ -2,6 +2,7 @@ package lesson5;
 
 import homework3.lesson5advanced.Lesson5Advanced;
 import homework3.lesson5basic.*;
+import homework3.lesson5expert.Lesson5Expert;
 
 import java.io.IOException;
 
@@ -50,7 +51,7 @@ public class Homework3 {
         // 4. Записать в файл "report.txt" все данные из отчетов.
         // 5. Прочитать файл report.txt, просуммировать все доходы и вывести на экран, тоже самое с расходами
         // Ожидаемый результат: общие доходы - (какое то число), общие расходы - (какое то число)
-//        Lesson5Advanced.zadacha2advanced();
+        Lesson5Advanced.zadacha2advanced();
 
 
         //Экспертный уровень
@@ -61,9 +62,9 @@ public class Homework3 {
         // perekrestok;9920.20;28200.01;21/01/2012
         // Где pyterochka - название магазина; 122300.20 - доход; 100312.10 - расход, 20/01/2012 - дата операции
         //Читать файлы нужно через
-        String s = Homework3.class.getClassLoader().getResource("report_03_2012.txt").toString();
-        System.out.println(s);
-
+//        String s = Homework3.class.getClassLoader().getResource("report_01_2012.txt").toString();
+//        System.out.println(s);
+//        Lesson5Expert.reportMaker();
         // Задача №1
         // Необходимо составить отчет о итоговой прибыли за каждый месяц по магазину pyterochka
         // Формат ожидаемого результат:

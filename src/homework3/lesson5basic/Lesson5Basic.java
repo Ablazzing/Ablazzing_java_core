@@ -27,7 +27,7 @@ public class Lesson5Basic {
     }
 
     public static void zadacha3basic() throws IOException {
-        FinancialRecord financialRecord = new FinancialRecord("500", "300");
+        FinancialRecord financialRecord = new FinancialRecord(500, 300);
         FileWriter fileWriter = new FileWriter("resource/report.txt");
         fileWriter.write(
                 "доходы = " + financialRecord.getIncomes() + ", расходы = " + financialRecord.getOutcomes()

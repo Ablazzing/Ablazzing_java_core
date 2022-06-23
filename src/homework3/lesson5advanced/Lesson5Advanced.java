@@ -7,6 +7,8 @@ import homework3.lesson5basic.Toyota;
 
 import java.io.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.security.PrivateKey;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -58,16 +60,11 @@ public class Lesson5Advanced {
     // 5. Прочитать файл report.txt, просуммировать все доходы и вывести на экран, тоже самое с расходами
     // Ожидаемый результат: общие доходы - (какое то число), общие расходы - (какое то число)
 
+    private static final String FILEPATH = "resource/report.txt";
+
     public static void zadacha2advanced() throws IOException {
-
-        DecimalFormat wantedFormat = setWantedFormat("#0.00", '.');
-
-        fullfillFile("resource/report.txt", wantedFormat);
-
-
-//        "\\p{L}+\\s=\\s(\\d{1,7}\\.\\d{2}),\\s\\p{L}+\\s=\\s(\\d{1,7}\\.\\d{2})"
-
-
+        fulfillFile(FILEPATH);
+        System.out.println(getIncomeAndOutcomeSums(FILEPATH));
     }
 
     //метод поиска числовых значений в строке по паттерну
@@ -83,40 +80,36 @@ public class Lesson5Advanced {
         return values;
     }
 
-    public static void fullfillFile(String filePath, DecimalFormat decimalFormat) throws IOException {
+    //метод заполнения файла случайными числами
+    public static void fulfillFile(String filePath) throws IOException {
         FileWriter fileWriter = new FileWriter(filePath);
-
         Random random = new Random(1);
-
         double rangeMin = 0.0;
         double rangeMax = 1000000.0;
 
         for (int i = 1; i <= 10; i++) {
-
-
             double randomValue1 = rangeMin + (rangeMax - rangeMin) * random.nextDouble();
-            String formattedRandomValue1 = decimalFormat.format(randomValue1);
             double randomValue2 = rangeMin + (rangeMax - rangeMin) * random.nextDouble();
-            String formattedRandomValue2 = decimalFormat.format(randomValue2);
-
-            FinancialRecord financialRecord = new FinancialRecord(formattedRandomValue1, formattedRandomValue2);
-            fileWriter.write(
-                    "доходы = " + financialRecord.getIncomes() + ", расходы = " + financialRecord.getOutcomes() + "\n"
-            );
+            FinancialRecord financialRecord = new FinancialRecord(randomValue1, randomValue2);
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("доходы = ")
+                    .append(roundingUp(financialRecord.getIncomes()))
+                    .append(", расходы = ")
+                    .append(roundingUp(financialRecord.getOutcomes()))
+                    .append("\n");
+            fileWriter.write(stringBuilder.toString());
         }
         fileWriter.close();
     }
 
-    public static DecimalFormat setWantedFormat(String wantedFormatPattern, Character wantedDecimalSeparator) {
-        Locale currentLocale = Locale.getDefault();
-        DecimalFormatSymbols otherSymbols = new DecimalFormatSymbols(currentLocale);
-        otherSymbols.setDecimalSeparator(wantedDecimalSeparator);
-        DecimalFormat df = new DecimalFormat(wantedFormatPattern, otherSymbols);
-        return df;
+    //метод округления даблов
+    public static BigDecimal roundingUp(double number) {
+        return new BigDecimal(number).setScale(2, RoundingMode.HALF_UP);
     }
 
-    public static String getIncomeAndOutcomeSums() throws IOException {
-        FileReader fileReader = new FileReader("resource/report.txt");
+    //метод высчитывания сумм доходов и расходов полученных из файла
+    public static String getIncomeAndOutcomeSums(String filepath) throws IOException {
+        FileReader fileReader = new FileReader(filepath);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String regex = "\\p{L}+\\s=\\s(\\d{1,7}\\.\\d{2}),\\s\\p{L}+\\s=\\s(\\d{1,7}\\.\\d{2})";
 
@@ -125,7 +118,6 @@ public class Lesson5Advanced {
 
         while (bufferedReader.ready()) {
             String documentLine = bufferedReader.readLine();
-            System.out.println(documentLine);
             String[] values = findValues(documentLine, regex);
 
             for (int i = 0; i < values.length; i++) {
@@ -136,8 +128,14 @@ public class Lesson5Advanced {
                 }
             }
         }
-        System.out.println(incomeSum);
-        System.out.println(outcomeSum);
-        return "общие доходы -" + incomeSum + ", общие расходы - " + outcomeSum;
+
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("общие доходы -")
+                .append(roundingUp(incomeSum))
+                .append(", общие расходы - ")
+                .append(roundingUp(outcomeSum))
+                .append("\n");
+
+        return stringBuilder.toString();
     }
 }
