@@ -6,7 +6,7 @@ import homework3.lesson5basic.*;
 import java.io.IOException;
 
 public class Homework3 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //Базовый уровень (для зачета нужно сделать хотя бы 2 из 3)
         //Задача №1
         //Дано: у нас есть две модели машин - жигули и toyota. Каждая из этих машин умеет: начинать движение,
