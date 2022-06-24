@@ -1,6 +1,6 @@
 package lesson5;
 
-public class Toyota extends CarFactory {
+public class Toyota extends Car {
         public Toyota() {
         }
 

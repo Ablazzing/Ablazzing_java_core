@@ -1,6 +1,6 @@
 package lesson5;
 
-    public abstract class CarFactory extends Car {
+    public class CarFactory {
         public CarFactory() {
         }
 
