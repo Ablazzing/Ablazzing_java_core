@@ -31,17 +31,17 @@ public class Lesson5Expert {
     public static void zadacha1expert() throws IOException {
 
         System.out.println(Arrays.toString(files));
-        List<String> wantedFiles = Arrays.stream(files)
-                .map(File::getName)
-                .filter(name -> name.contains("2012"))
+        List<File> wantedFiles = Arrays.stream(files)
+                .filter(file -> file.getName().contains("2012"))
+//                .map(File::getName)
                 .collect(Collectors.toList());
         System.out.println(wantedFiles);
 
 
-        for (String filename :
+        for (File file :
                 wantedFiles) {
-            String date = getPeriod(filename, fileNameRegex);
-            BigDecimal profit = getProfit(filename, dataLineRegex);
+            String date = getPeriod(file.toString(), fileNameRegex);
+            BigDecimal profit = getProfit(file.toString(), dataLineRegex);
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append("Прибыль по магазину pyterochka по месяцам")
                 .append(profit)
