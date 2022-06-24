@@ -1,6 +1,6 @@
 package lesson5;
 
-public class Zhiguli extends CarFactory {
+public class Zhiguli extends Car {
     public Zhiguli() {
     }
 
