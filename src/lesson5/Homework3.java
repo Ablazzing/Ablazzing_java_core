@@ -1,15 +1,7 @@
 package lesson5;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.stream.Stream;
-
 public class Homework3 {
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) {
         //Базовый уровень (для зачета нужно сделать хотя мобы 2 из 3)
         //Задача №1
         //Дано: у нас есть две модели машин - жигули и toyota. Каждая из этих машин умеет: начинать движение,
@@ -58,10 +50,8 @@ public class Homework3 {
         // perekrestok;9920.20;28200.01;21/01/2012
         // Где pyterochka - название магазина; 122300.20 - доход; 100312.10 - расход, 20/01/2012 - дата операции
         //Читать файлы нужно через
-//        String path = Homework3.class.getClassLoader().getResource("report_03_2012.txt").getPath();
-        URI path1 = Homework3.class.getClassLoader().getResource("").toURI();
-        Files.walk(Path.of(path1)).forEach(e -> System.out.println(e.toString()));
-
+        String s = Homework3.class.getClassLoader().getResource("report_03_2012.txt").toString();
+        System.out.println(s);
 
         // Задача №1
         // Необходимо составить отчет о итоговой прибыли за каждый месяц по магазину pyterochka
