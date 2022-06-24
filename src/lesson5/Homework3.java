@@ -64,15 +64,15 @@ public class Homework3 {
         // 2. Создать 20 тойот, 20 жигулей с помощью CarFactory, положить их в один массив.
         // 3. Пройтись по массиву, проверить к какому классу принадлежит машина, привести тип к классу машины
         // и вызвать характерные для нее методы.
-        CarFactory[] cars = new CarFactory[40];
+        Car[] cars = new Car[40];
         Random r = new Random();
 
         for(int i = 0; i < 40; ++i) {
-            cars[i] = r.nextBoolean() ? CarFactory.createZ() : CarFactory.createT();
+            cars[i] = r.nextBoolean() ?  CarFactory.createZ() : CarFactory.createT();
         }
 
 
-        for (CarFactory car : cars) {
+        for (Car car : cars) {
             if (car instanceof Toyota) {
                 Toyota t = (Toyota) car;
                 t.turnMysicOn();
