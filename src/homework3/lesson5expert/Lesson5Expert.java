@@ -8,15 +8,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 
 public class Lesson5Expert {
@@ -42,6 +38,18 @@ public class Lesson5Expert {
         System.out.println(wantedFiles);
 
 
+        for (String filename :
+                wantedFiles) {
+            String date = getPeriod(filename, fileNameRegex);
+            BigDecimal profit = getProfit(filename, dataLineRegex);
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append("Прибыль по магазину pyterochka по месяцам")
+                .append(profit)
+                .append(date)
+                .append("\n");
+            System.out.println(stringBuilder);
+        }
+
 //        System.out.println(resource);
 
 //
@@ -62,20 +70,20 @@ public class Lesson5Expert {
     }
 
     public static String getFileNameByMonth(Integer month) {
-            if (month < 10) {
-                String s = Homework3.class.getClassLoader().getResource("report_0" + month + "_2012.txt").toString();
-                return s;
-            } else if (month < 12) {
+        if (month < 10) {
+            String s = Homework3.class.getClassLoader().getResource("report_0" + month + "_2012.txt").toString();
+            return s;
+        } else if (month < 12) {
 
-                String s = Homework3.class.getClassLoader().getResource("report_" + month + "_2012.txt").toString();
-                return s;
-            } else {
-                System.out.println("Введите корректный номер месяца");
-                return null;
-            }
+            String s = Homework3.class.getClassLoader().getResource("report_" + month + "_2012.txt").toString();
+            return s;
+        } else {
+            System.out.println("Введите корректный номер месяца");
+            return null;
+        }
     }
 
-    private static String getDate(String fileName, String fileNameRegex) {
+    private static String getPeriod(String fileName, String fileNameRegex) {
         Matcher matcher = Pattern.compile(fileNameRegex).matcher(fileName);
         String[] dateParts = new String[2];
         for (int i = 0; i < dateParts.length; i++) {
