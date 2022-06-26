@@ -27,7 +27,8 @@ public class DataGenerator {
     private static final int YEAR = 2012;
 
     public static void main(String[] args) throws IOException {
-        createReports();
+        System.out.println(DataGenerator.class.getClassLoader().getResource("report_01_2012.txt"));
+        //createReports();
     }
 
     public static void createReports() throws IOException {
