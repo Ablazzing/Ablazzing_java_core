@@ -1,6 +1,6 @@
 package lesson7;
 
-public class Fern implements Flower {
+public class Fern extends Flower implements Bloomable  {
 
     @Override
     public String canBloom() {

@@ -1,6 +1,6 @@
 package lesson7;
 
-public class Rose implements Flower, Tree{
+public class Rose extends Flower implements Bloomable, Smellable{
     @Override
     public String canBloom() {
         return "умеет цвести";

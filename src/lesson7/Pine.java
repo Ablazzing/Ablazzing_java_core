@@ -1,14 +1,9 @@
 package lesson7;
 
-public class Pine implements Tree {
-
-    public void hasPinecone() {
-        System.out.println("есть шишки");
-    }
+public class Pine extends Tree implements Smellable{
 
     @Override
     public String canSmell() {
-        return "умеет пахнуть";
+        return "может пахнуть";
     }
-
 }

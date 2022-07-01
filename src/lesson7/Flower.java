@@ -1,5 +1,5 @@
 package lesson7;
 
-public interface Flower {
-    String canBloom();
+public abstract class Flower {
+
 }

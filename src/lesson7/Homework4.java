@@ -86,7 +86,16 @@ public class Homework4 {
 
         for (Shop shop: brand.shops) {
             for (Worker worker: shop.workers) {
-                worker.watch.tick();
+                try {
+                    if (worker.watch.isBroken()) {
+                        throw new TickException("часы сломаны");
+                    } else {
+                        System.out.println("часы тикают");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
             }
         }
 

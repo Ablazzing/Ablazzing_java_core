@@ -20,7 +20,7 @@ public class Plane implements Flyable {
                System.out.println("Самолет летит");
            }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 }

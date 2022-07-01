@@ -16,7 +16,7 @@ public class Duck implements Flyable {
                 System.out.println("утка летит");
             }
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getMessage());
         }
     }
 }
