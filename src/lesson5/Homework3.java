@@ -21,13 +21,13 @@ public class Homework3 {
         zhiguli.startMoving();
         zhiguli.stop();
         zhiguli.turnHeadlights();
-        zhiguli.problem();
+        ////zhiguli.problem();
 
         Toyota toyota = new Toyota();
         toyota.startMoving();
         toyota.stop();
         toyota.turnHeadlights();
-        toyota.turnMysicOn();
+        //toyota.turnMysicOn();
         //Задача №2
         //Необходимо:
         // 1. Создать папку resource, пометить ее как папку Resourсe root.
@@ -75,10 +75,10 @@ public class Homework3 {
         for (Car car : cars) {
             if (car instanceof Toyota) {
                 Toyota t = (Toyota) car;
-                t.turnMysicOn();
+                //t.turnMysicOn();
             } else if (car instanceof Zhiguli) {
                 Zhiguli z = (Zhiguli) car;
-                z.problem();
+                //z.problem();
             }
         }
 
