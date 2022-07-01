@@ -70,8 +70,8 @@ public class Homework3 {
         // Где pyterochka - название магазина; 122300.20 - доход; 100312.10 - расход, 20/01/2012 - дата операции
         //Читать файлы нужно через
 //        String path = Homework3.class.getClassLoader().getResource("report_03_2012.txt").getPath();
-        URI path1 = Homework3.class.getClassLoader().getResource("").toURI();
-        Files.walk(Path.of(path1)).forEach(e -> System.out.println(e.toString()));
+//        URI path1 = Homework3.class.getClassLoader().getResource("").toURI();
+//        Files.walk(Path.of(path1)).forEach(e -> System.out.println(e.toString()));
 
 
         // Задача №1
