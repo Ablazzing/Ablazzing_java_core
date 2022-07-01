@@ -1,4 +1,4 @@
-package lesson7;
+package lesson7.base_task1;
 
 public class Plane implements Flyable {
     private int countPassengers;

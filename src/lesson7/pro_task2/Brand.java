@@ -1,4 +1,4 @@
-package lesson7;
+package lesson7.pro_task2;
 
 import java.util.ArrayList;
 

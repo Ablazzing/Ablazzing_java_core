@@ -1,5 +1,14 @@
 package lesson7;
 
+import lesson7.base_task1.Duck;
+import lesson7.base_task1.FlyException;
+import lesson7.base_task1.Plane;
+import lesson7.pro_task1.Fern;
+import lesson7.pro_task1.Pine;
+import lesson7.pro_task1.Rose;
+import lesson7.pro_task1.Spruce;
+import lesson7.pro_task2.*;
+
 import java.util.ArrayList;
 
 public class Homework4 {
@@ -78,26 +87,7 @@ public class Homework4 {
         // Часы тикают
         // Ошибка: Часы сломались.
 
-        ArrayList<Shop> shops = new ArrayList<>();
-        Brand brand = new Brand(shops);
-
-        shops.add(new Shop(new Worker[]{new Worker(new Watch(true))}));
-        shops.add(new Shop(new Worker[]{new Worker(new Watch(false))}));
-
-        for (Shop shop: brand.shops) {
-            for (Worker worker: shop.workers) {
-                try {
-                    if (worker.watch.isBroken()) {
-                        throw new TickException("часы сломаны");
-                    } else {
-                        System.out.println("часы тикают");
-                    }
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-
-            }
-        }
+        // вынес в отдельный класс
 
         //Экспертный уровень:
         //Задача №1

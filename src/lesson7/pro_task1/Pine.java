@@ -1,4 +1,4 @@
-package lesson7;
+package lesson7.pro_task1;
 
 public class Pine extends Tree implements Smellable{
 

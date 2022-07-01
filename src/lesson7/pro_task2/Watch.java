@@ -1,4 +1,4 @@
-package lesson7;
+package lesson7.pro_task2;
 
 public class Watch {
     public boolean isBroken;

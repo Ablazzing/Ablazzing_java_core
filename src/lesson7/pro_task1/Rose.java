@@ -1,4 +1,4 @@
-package lesson7;
+package lesson7.pro_task1;
 
 public class Rose extends Flower implements Bloomable, Smellable{
     @Override
