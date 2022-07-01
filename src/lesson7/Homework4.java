@@ -1,7 +1,9 @@
 package lesson7;
 
+import java.util.ArrayList;
+
 public class Homework4 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FlyException {
         //Базовый уровень
         //Задача №1
         //1. Создать два класса, которые умеют летать: самолет и утка. Атрибут утки: isInjured (ранен),
@@ -23,6 +25,15 @@ public class Homework4 {
         // Ошибка: утка ранена
         // самолет летит
         // Ошибка: пассажиров в самолете меньше 0
+        Duck duck1 = new Duck(false);
+            duck1.fly();
+        Duck duck2 = new Duck(true);
+            duck2.fly();
+        Plane plane1 = new Plane(10);
+            plane1.fly();
+        Plane plane2 = new Plane(-1);
+            plane2.fly();
+         // Или
 
         //Продвинутый уровень
         //Задача №1
@@ -39,6 +50,18 @@ public class Homework4 {
         // роза: умееть пахнуть
         // роза: умеет цвести
         // папоротник: умеет цвести
+        Pine pine = new Pine();
+            System.out.println("Ель: " + pine.canSmell());
+
+        Spruce spruce = new Spruce();
+            System.out.println("Сосна: " + spruce.canSmell());
+
+        Rose rose = new Rose();
+            System.out.println("Роза: "+rose.canSmell());
+            System.out.println("Роза: "+rose.canBloom());
+
+        Fern fern = new Fern();
+            System.out.println("Папоротник: "+fern.canBloom());
 
 
         //Задача №2
@@ -54,6 +77,27 @@ public class Homework4 {
         // Ожидание вывода на экран:
         // Часы тикают
         // Ошибка: Часы сломались.
+
+        ArrayList<Shop> shops = new ArrayList<>();
+        Brand brand = new Brand(shops);
+
+        shops.add(new Shop(new Worker[]{new Worker(new Watch(true))}));
+        shops.add(new Shop(new Worker[]{new Worker(new Watch(false))}));
+
+        for (Shop shop: brand.shops) {
+            for (Worker worker: shop.workers) {
+                try {
+                    if (worker.watch.isBroken()) {
+                        throw new TickException("часы сломаны");
+                    } else {
+                        System.out.println("часы тикают");
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+
+            }
+        }
 
         //Экспертный уровень:
         //Задача №1
