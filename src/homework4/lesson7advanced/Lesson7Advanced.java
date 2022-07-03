@@ -1,13 +1,10 @@
 package homework4.lesson7advanced;
 
 import homework4.lesson7advanced.Task1.*;
-import homework4.lesson7advanced.Task2.Brand;
-import homework4.lesson7advanced.Task2.Store;
-import homework4.lesson7advanced.Task2.Watch;
-import homework4.lesson7advanced.Task2.Worker;
+import homework4.lesson7advanced.Task2.*;
 
 public class Lesson7Advanced {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws WatchBrokenException {
 
 
         //Продвинутый уровень
@@ -55,13 +52,12 @@ public class Lesson7Advanced {
         // Ошибка: Часы сломались.
 
 
-//        Watch watch1 = new Watch(true);
-//        Watch watch2 = new Watch(false);
-//        Worker worker1 =  new Worker(watch1);
-//        Worker worker2 =  new Worker(watch2);
-
-
+        Watch watch1 = new Watch(true);
+        Worker worker1 = new Worker(watch1);
         Store store1 = new Store(worker1);
+
+        Watch watch2 = new Watch(false);
+        Worker worker2 = new Worker(watch2);
         Store store2 = new Store(worker2);
 
         Store[] stores = {store1, store2};
@@ -70,7 +66,11 @@ public class Lesson7Advanced {
         Brand brand = new Brand(stores);
         for (Store store :
                 brand.getStores()) {
-
+            try {
+                store.ticking();
+            } catch (WatchBrokenException e) {
+                System.out.println(e.getMessage());
+            }
         }
 
 

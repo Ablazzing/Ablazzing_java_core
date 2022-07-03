@@ -18,8 +18,4 @@ public class Watch {
     public boolean isClockIsTicking() {
         return clockIsTicking;
     }
-
-    public void setClockIsTicking(boolean clockIsTicking) {
-        this.clockIsTicking = clockIsTicking;
-    }
 }

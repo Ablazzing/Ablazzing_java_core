@@ -4,7 +4,7 @@ public class Fern implements Plant {
 
     @Override
     public void canSmell() {
-        System.out.println("");
+        System.out.print("");
     }
 
     @Override
