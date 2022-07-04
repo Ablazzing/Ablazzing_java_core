@@ -5,35 +5,56 @@ public class Human {
     private int age;
     private double weight;
 
-    private Human(String name, int age, double weight) {
-        this.name = name;
-        this.age = age;
-        this.weight = weight;
+    public void info() {
+        String a = getName();
+        int b = getAge();
+        double c = getWeight();
+        System.out.printf("%s - возраст %s, вес - %s", a, b, c);
     }
 
-    public static HumanBuilder builder() {
-        HumanBuilder humanBuilder = new HumanBuilder();
-        return humanBuilder;
+    public String getName() {
+        return name;
     }
 
-    static class HumanBuilder {
+    public int getAge() {
+        return age;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public static class Builder {
         private Human newHuman;
 
-        public void name(String name) {
+        public Builder(){
+            newHuman = new Human();
+        }
+
+        public Builder name(String name) {
+
             newHuman.name = name;
+            return this;
         }
+        public Builder age(int age) {
 
-        public void age(int age) {
             newHuman.age = age;
+            return this;
         }
+        public Builder weight(double weight) {
 
-        public void weight(double weight) {
             newHuman.weight = weight;
+            return this;
         }
 
-        public static Human build() {
-
-            return Human;
+        public Human build() {
+            return newHuman;
         }
+
     }
+
+
+
+
+
 }
